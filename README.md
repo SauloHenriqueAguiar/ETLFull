@@ -1,72 +1,91 @@
 # ETLFull
 
-ETL Web Scraping com AWS Lambda, S3, Redshift e QuickSight
 Este projeto é uma solução completa de ETL (Extract, Transform, Load) que realiza web scraping automático, armazena dados em Amazon S3, carrega os dados para Amazon Redshift e visualiza os resultados usando Amazon QuickSight.
 
-Visão Geral
+## Visão Geral
+
 O objetivo deste projeto é coletar dados de produtos e preços de um site de e-commerce, processá-los e carregá-los em um data warehouse para análise e visualização. A arquitetura é baseada em serviços da AWS para garantir escalabilidade e eficiência.
 
-Arquitetura
-Web Scraping: Utiliza um script Python executado em AWS Lambda para realizar o scraping automático dos dados.
-Armazenamento de Dados: Os dados coletados são armazenados em buckets do Amazon S3.
-Processamento e Carga: Utiliza o Amazon Redshift para armazenar e processar os dados extraídos.
-Visualização: Amazon QuickSight é usado para criar dashboards e visualizar os dados processados.
-Componentes do Projeto
-1. Web Scraping com AWS Lambda
-Função Lambda: Um script Python que usa Selenium para realizar o web scraping.
-Trigger: Pode ser configurado para executar em intervalos regulares usando AWS CloudWatch Events.
-2. Armazenamento de Dados com Amazon S3
-Bucket S3: Armazena os arquivos de dados extraídos pelo Lambda.
-3. Processamento e Carga com Amazon Redshift
-Cluster Redshift: Armazena os dados em um data warehouse para consultas e análises.
-ETL Jobs: Scripts ou jobs que carregam os dados do S3 para o Redshift.
-4. Visualização com Amazon QuickSight
-Dashboards: Cria visualizações interativas dos dados processados no Redshift.
-Configuração
-1. Configuração do Web Scraping
-Criar Função Lambda:
+## Arquitetura
 
-Suba o código Python para o Lambda.
-Configure as permissões necessárias para acessar o S3.
-Configurar Selenium:
+1. **Web Scraping**: Utiliza um script Python executado em AWS Lambda para realizar o scraping automático dos dados.
+2. **Armazenamento de Dados**: Os dados coletados são armazenados em buckets do Amazon S3.
+3. **Processamento e Carga**: Utiliza o Amazon Redshift para armazenar e processar os dados extraídos.
+4. **Visualização**: Amazon QuickSight é usado para criar dashboards e visualizar os dados processados.
 
-Certifique-se de que o ambiente Lambda tenha os pacotes necessários para rodar o Selenium.
-Configurar Trigger:
+## Componentes do Projeto
 
-Configure um evento do CloudWatch para disparar a função Lambda em intervalos definidos.
-2. Configuração do Amazon S3
-Criar Bucket:
+### 1. Web Scraping com AWS Lambda
 
-Crie um bucket no S3 para armazenar os dados extraídos.
-Configurar Permissões:
+- **Função Lambda**: Um script Python que usa Selenium para realizar o web scraping.
+- **Trigger**: Pode ser configurado para executar em intervalos regulares usando AWS CloudWatch Events.
 
-Configure as permissões apropriadas para a função Lambda acessar o bucket.
-3. Configuração do Amazon Redshift
-Criar Cluster:
+### 2. Armazenamento de Dados com Amazon S3
 
-Crie um cluster Redshift.
-Criar Tabelas:
+- **Bucket S3**: Armazena os arquivos de dados extraídos pelo Lambda.
 
-Defina o esquema e crie tabelas para armazenar os dados.
-Configurar ETL Jobs:
+### 3. Processamento e Carga com Amazon Redshift
 
-Crie scripts ou use ferramentas para carregar os dados do S3 para o Redshift.
-4. Configuração do Amazon QuickSight
-Conectar ao Redshift:
+- **Cluster Redshift**: Armazena os dados em um data warehouse para consultas e análises.
+- **ETL Jobs**: Scripts ou jobs que carregam os dados do S3 para o Redshift.
 
-Configure o QuickSight para se conectar ao cluster Redshift.
-Criar Dashboards:
+### 4. Visualização com Amazon QuickSight
 
-Use o QuickSight para criar visualizações e relatórios baseados nos dados do Redshift.
-Scripts e Código
-lambda_function.py: Script Python para o web scraping.
-etl_jobs.sql: Scripts SQL para carregar os dados no Redshift.
-create_dashboard.qs: Arquivo de configuração do QuickSight (opcional).
-Dependências
-Python 3.x
-Selenium
-AWS SDK (boto3)
-AWS Lambda
-Amazon S3
-Amazon Redshift
-Amazon QuickSight
+- **Dashboards**: Cria visualizações interativas dos dados processados no Redshift.
+
+## Configuração
+
+### 1. Configuração do Web Scraping
+
+1. **Criar Função Lambda**:
+   - Suba o código Python para o Lambda.
+   - Configure as permissões necessárias para acessar o S3.
+
+2. **Configurar Selenium**:
+   - Certifique-se de que o ambiente Lambda tenha os pacotes necessários para rodar o Selenium.
+
+3. **Configurar Trigger**:
+   - Configure um evento do CloudWatch para disparar a função Lambda em intervalos definidos.
+
+### 2. Configuração do Amazon S3
+
+1. **Criar Bucket**:
+   - Crie um bucket no S3 para armazenar os dados extraídos.
+
+2. **Configurar Permissões**:
+   - Configure as permissões apropriadas para a função Lambda acessar o bucket.
+
+### 3. Configuração do Amazon Redshift
+
+1. **Criar Cluster**:
+   - Crie um cluster Redshift.
+
+2. **Criar Tabelas**:
+   - Defina o esquema e crie tabelas para armazenar os dados.
+
+3. **Configurar ETL Jobs**:
+   - Crie scripts ou use ferramentas para carregar os dados do S3 para o Redshift.
+
+### 4. Configuração do Amazon QuickSight
+
+1. **Conectar ao Redshift**:
+   - Configure o QuickSight para se conectar ao cluster Redshift.
+
+2. **Criar Dashboards**:
+   - Use o QuickSight para criar visualizações e relatórios baseados nos dados do Redshift.
+
+## Scripts e Código
+
+- `lambda_function.py`: Script Python para o web scraping.
+- `etl_jobs.sql`: Scripts SQL para carregar os dados no Redshift.
+- `create_dashboard.qs`: Arquivo de configuração do QuickSight (opcional).
+
+## Dependências
+
+- Python 3.x
+- Selenium
+- AWS SDK (boto3)
+- AWS Lambda
+- Amazon S3
+- Amazon Redshift
+- Amazon QuickSight
